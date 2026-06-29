@@ -1,0 +1,354 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap");
+@import "tailwindcss";
+
+:root {
+  --ink: #0b0b0b;
+  --ivory: #f4f0e8;
+  --gold: #c9a44d;
+  --gold-light: #dfbd68;
+  --gold-dark: #8f6d24;
+}
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: auto;
+  min-height: 100%;
+  scroll-padding-top: 5rem;
+  background: var(--ink);
+}
+
+body {
+  margin: 0;
+  height: auto;
+  min-width: 320px;
+  min-height: 100%;
+  overflow: visible;
+  overscroll-behavior-y: auto;
+  touch-action: pan-y pinch-zoom;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+}
+
+main {
+  display: block;
+  overflow: visible;
+}
+
+section {
+  scroll-margin-top: 5rem;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #55451f;
+}
+
+.nav-link {
+  position: relative;
+  padding-block: 0.4rem;
+  transition: color 220ms ease;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover {
+  color: var(--ivory);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.button-gold,
+.button-outline {
+  display: inline-flex;
+  min-height: 3.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.7rem;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.2;
+  transition: background-color 260ms ease, border-color 260ms ease, color 260ms ease,
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.button-gold {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.button-gold:hover {
+  border-color: var(--gold-light);
+  background: var(--gold-light);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--gold-light);
+}
+
+.button-outline:hover {
+  background: var(--gold);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(201 164 77 / 24%);
+  border-radius: clamp(1.5rem, 3vw, 2rem);
+  background: #171717;
+  box-shadow: 0 22px 55px rgb(0 0 0 / 24%);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms ease, box-shadow 320ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .media-frame:hover {
+    border-color: rgb(223 189 104 / 55%);
+    box-shadow: 0 30px 70px rgb(0 0 0 / 34%);
+    transform: translateY(-6px);
+  }
+}
+
+.project-caption {
+  display: grid;
+  gap: 1.5rem;
+  align-items: end;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgb(201 164 77 / 35%);
+}
+
+.project-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.7rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--ivory);
+}
+
+.project-discipline {
+  margin-top: 0.7rem;
+  color: var(--gold-light);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-description {
+  max-width: 36rem;
+  color: rgb(244 240 232 / 76%);
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  line-height: 1.8;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid rgb(201 164 77 / 48%);
+  color: rgb(244 240 232 / 78%);
+  font-size: 0.96rem;
+  transition: color 220ms ease, padding-left 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-link:hover {
+  padding-left: 0.35rem;
+  color: var(--gold-light);
+}
+
+@keyframes intro-overlay-reveal {
+  0% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes intro-logo-reveal {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.42em;
+    transform: translateY(10px);
+  }
+  38%,
+  72% {
+    opacity: 1;
+    letter-spacing: 0.28em;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    letter-spacing: 0.28em;
+    transform: translateY(-6px);
+  }
+}
+
+.intro-overlay {
+  position: fixed;
+  z-index: 70;
+  inset: 0;
+  display: grid;
+  pointer-events: none;
+  place-items: center;
+  background: var(--ink);
+  animation: intro-overlay-reveal 1s ease-out both;
+}
+
+.intro-logo {
+  margin: 0;
+  color: var(--gold-light);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 400;
+  animation: intro-logo-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-image-in {
+  from {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-reveal {
+  opacity: 0;
+  animation: hero-text-in 620ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-delay {
+  animation-delay: 90ms;
+}
+
+.hero-image-reveal {
+  opacity: 0;
+  animation: hero-image-in 720ms 80ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (min-width: 768px) {
+  .project-caption {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .project-description {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 639px) {
+  .button-gold,
+  .button-outline {
+    width: 100%;
+  }
+
+  .project-caption {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
